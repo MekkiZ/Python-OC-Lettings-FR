@@ -1,6 +1,7 @@
 from django.urls import path
 from lettings import views as view_letting
 
+
 app_name = 'lettings'
 urlpatterns = [
 
