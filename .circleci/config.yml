@@ -47,8 +47,8 @@ jobs:
           docker_layer_caching: true
       - run: |
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      - run: docker build -t gatsfreecs/hash:$CIRCLE_SHA1 .
-      - run: docker push gatsfreecs/hash:$CIRCLE_SHA1
+      - run: docker build -t gatsfreecs/hash:<< pipeline.git.revision >> .
+      - run: docker push gatsfreecs/hash:<< pipeline.git.revision >>
 
 
 
