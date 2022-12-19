@@ -62,7 +62,3 @@ workflows:
     jobs:
       - build-and-test
       - build-and-push-to-dockerhub:
-          filters:
-          branches:
-            only:
-              - master
