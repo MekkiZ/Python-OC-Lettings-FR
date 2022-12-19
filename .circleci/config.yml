@@ -53,8 +53,8 @@ jobs:
              docker_layer_caching: true
          - run: |
              echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-         - run: docker build -t gatsfreecs/hash:<<pipeline.git.revision>> .
-         - run: docker push gatsfreecs/hash:<<pipeline.git.revision>>
+         - run: docker build -t gatsfreecs/hash:<< pipeline.git.revision >> .
+         - run: docker push gatsfreecs/hash:<< pipeline.git.revision >>
 
       
 
@@ -65,6 +65,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - build_and_push_to_dockerhub:
-          requires:
-            build-and-test
+      - build_and_push_to_dockerhub
