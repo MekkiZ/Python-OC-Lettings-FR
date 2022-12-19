@@ -45,20 +45,21 @@ jobs:
           command: python3 manage.py test
   build_and_push_to_dockerhub:
     docker:
-     - image: cimg/python:3.10.1
-       steps:
-         - checkout
-         - setup_remote_docker:
-             version: 20.10.18
-             docker_layer_caching: true
-         - run: |
-             echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-         - run:
-           command: |
-            docker build -t gatsfreecs/hash:<< pipeline.git.revision >> .
-         - run:
-           command: |
-            docker push gatsfreecs/hash:<< pipeline.git.revision >>
+    - image: cimg/python:3.10.1
+    steps:
+     - checkout
+     - setup_remote_docker:
+         version: 20.10.18
+         docker_layer_caching: true
+     - run:
+        command: |
+         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+     - run:
+       command: |
+        docker build -t gatsfreecs/hash:<< pipeline.git.revision >> .
+     - run:
+       command: |
+        docker push gatsfreecs/hash:<< pipeline.git.revision >>
 
       
 
