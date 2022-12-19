@@ -43,25 +43,21 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: python3 manage.py test
-  build_and_push_to_dockerhub:
+  build-and-push-to-dockerhub:
     docker:
-    - image: cimg/python:3.10.1
+      - image: cimg/python:3.10.1
     steps:
-     - checkout
-     - setup_remote_docker:
-         version: 20.10.18
-         docker_layer_caching: true
-     - run:
-        command: |
-         echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-     - run:
-       command: |
-        docker build -t gatsfreecs/hash:<< pipeline.git.revision >> .
-     - run:
-       command: |
-        docker push gatsfreecs/hash:<< pipeline.git.revision >>
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+      - run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+      - run: docker build -t user_name/circle_ci_python_example:<< pipeline.git.revision >> .
+      - run: docker push user_name/circle_ci_python_example:<< pipeline.git.revision >>
 
-      
+
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
