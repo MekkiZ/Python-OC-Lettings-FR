@@ -56,10 +56,10 @@ jobs:
       - run:
           name: Build and push Docker image to Heroku
           command: |
-            curl https://cli-assets.heroku.com/install.sh | sh
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
             $HEROKU_API_KEY heroku container:login
-            $HEROKU_API_KEY heroku container:push -a $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1 web
-  
+            $HEROKU_API_KEY heroku container:push -a $DOCKERHUB_USERNAME/hash web
+            $HEROKU_API_KEY heroku container:release -a $DOCKERHUB_USERNAME/hash web
 
 
 
