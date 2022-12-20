@@ -69,8 +69,8 @@ workflows:
   # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - deploy_devops
       - build-and-push-to-dockerhub:
           filters:
             branches:
               only: master
+      - deploy_devops
