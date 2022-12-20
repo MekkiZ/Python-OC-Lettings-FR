@@ -57,7 +57,7 @@ jobs:
           name: Build and push Docker image to Heroku
           command: |
             sudo curl https://cli-assets.heroku.com/install.sh | sh
-            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login -u $DOCKERHUB_USERNAME --password-stdin
+            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login -u $DOCKERHUB_USERNAME
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a gatsfreecs/hash web
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a gatsfreecs/hash web
 
