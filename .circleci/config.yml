@@ -73,4 +73,7 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy_devops
+      - deploy_devops:
+          filters:
+            branches:
+              only: master
