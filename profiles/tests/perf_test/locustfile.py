@@ -1,6 +1,4 @@
-from locust import HttpUser, task, TaskSet
-import requests
-from django.urls import reverse
+from locust import HttpUser, task
 
 
 class ProjectPerfTest(HttpUser):
