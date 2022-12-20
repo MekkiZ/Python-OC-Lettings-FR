@@ -49,7 +49,17 @@ jobs:
       - run: docker build -t $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1 .
       - run: docker push $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1
       # - run: docker commit 0673c675affc $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1
-
+  deploy_devops:
+    machine: True
+    steps:
+      - checkout
+      - run:
+          name: Build and push Docker image to Heroku
+          command: |
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1 web
+  
 
 
 
@@ -61,8 +71,8 @@ workflows:
   # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+      - deploy_devops
       - build-and-push-to-dockerhub:
           filters:
             branches:
               only: master
-      - heroku/deploy-via-git
