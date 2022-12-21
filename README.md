@@ -121,13 +121,30 @@ https://devcenter.heroku.com/articles/heroku-cli
 
 Dans la console de votre venv :
 ```cython
-heroku addons:create sentry
+heroku addons:create sentry --app oc-lettings-3000
 ```
+```cython
+heroku addons:open sentry  
+```
+une fenetre s'ouvre et suivez les etapes pour Django,
+ne renseignez copier que les chiffre de l'url DSN dans les settings du projet.
+
+exemple : 
+vous aurez une chose comme ca :
+```dsn="https://3a11a3a2f0da47b4942e96a7081f2d8b@o45043688865792.ingest.sentry.io/4504368886579200",```
+
+veuillez renseignez dans la varaible de settings:
+keys_1 = '3a11a3a2f0da47b4942e96a7081f2d8b@o45043688865792'
+keys_2 = '4504368886579200'
+
+Et ce à chaque fois, car l'url change a chaque fois qu'on change de app.
+
+refaire un add, commit, push, a chaque fois que vous toucher aux settings>
+
 Aller sur ce lien, vous allez rencontrer une erreur, c'est normal.
 https://oc-lettings-3000.herokuapp.com/sentry-debug/
 
-Aller sur le dashboard Heroku de l'app:
-et dans la catégorie 'Installed add-ons', cliquer su Sentry, vous serai rediriger sur le dashboard>
+retoruner sur la page de sentry précedemment et visualisez les erreurs
 
 
 
