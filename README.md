@@ -98,22 +98,6 @@ Pour un deploiement optimal de l'application, certaine brique technologique:
 ### Etape 1:
 Allez sur Heroku, cree un app avec ce nom excatement:
 'oc-lettings-3000'
-Ensuite suivez l'etape 2.
-#### Etape 2:
-Se connecter a Circle-ci avec votre compte Github>
-Puis cliquez sur le boutton 'Set Up Project'
-Selectionez le premier choix 'Fastest'
-Le deployment va se lancer.
-
-Des que Circle-ci montre un succes.
-
-Retournez sur heroku.
-
-Au niveau du dashboard de l'app cree precedement
-cliquer sur Open app en haut à droite.
-
-ou rendez-vous a cette adresse:
-https://oc-lettings-3000.herokuapp.com/
 
 ### Sentry
 installer heroku cli dans votre machine:
@@ -139,20 +123,29 @@ keys_2 = '4504368886579200'
 
 Et ce à chaque fois, car l'url change a chaque fois qu'on change de app.
 
-refaire un add, commit, push, a chaque fois que vous toucher aux settings>
+refaire un add, commit, push, a chaque fois que vous toucher aux settings
+
+
+#### Etape 2:
+Se connecter a Circle-ci avec votre compte Github>
+Puis cliquez sur le boutton 'Set Up Project'
+Selectionez le premier choix 'Fastest'
+Le deployment va se lancer.
+
+Des que Circle-ci montre un succes.
+
+Retournez sur heroku.
+
+Au niveau du dashboard de l'app cree precedement
+cliquer sur Open app en haut à droite.
+
+ou rendez-vous a cette adresse:
+https://oc-lettings-3000.herokuapp.com/
 
 Aller sur ce lien, vous allez rencontrer une erreur, c'est normal.
 https://oc-lettings-3000.herokuapp.com/sentry-debug/
 
-retoruner sur la page de sentry précedemment et visualisez les erreurs
-
-
-
-
-
-
-
-
+retoruner sur la page de sentry précedemment (page sentry precedement parlé) et visualisez les erreurs
 
 #### Etapes pour le telchargement local:
 
