@@ -49,9 +49,9 @@ jobs:
           docker_layer_caching: true
       - run: |
           echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
-      - run: docker build -t $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1 .
-      - run: docker push $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1
-      # - run: docker commit 0673c675affc $DOCKERHUB_USERNAME/hash:$CIRCLE_SHA1
+      - run: docker build -t $DOCKERHUB_USERNAME/$DOCKERHUB_NAME_IMAGE:$CIRCLE_SHA1 .
+      - run: docker push $DOCKERHUB_USERNAME/$DOCKERHUB_NAME_IMAGE:$CIRCLE_SHA1
+      # - run: docker commit 0673c675affc $DOCKERHUB_USERNAME/$DOCKERHUB_NAME_IMAGE:$CIRCLE_SHA1
   deploy_devops:
     machine: True
     steps:

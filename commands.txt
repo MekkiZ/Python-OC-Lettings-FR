@@ -1,2 +1,2 @@
 docker build --tag .
-docker run --publish 8000:8000 gatsfreecs/hash:dc8f76eaeca63fe40d02ea35bb8fae762c3b2250
+docker run --publish 8000:8000 gatsfreecs/hash:<tag>
