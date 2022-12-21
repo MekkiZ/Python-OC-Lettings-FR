@@ -116,8 +116,19 @@ ou rendez-vous a cette adresse:
 https://oc-lettings-3000.herokuapp.com/
 
 ### Sentry
-En vous connectant sur Sentry renseignez le projet.
-et 
+installer heroku cli dans votre machine:
+https://devcenter.heroku.com/articles/heroku-cli
+
+Dans la console de votre venv :
+```cython
+heroku addons:create sentry
+```
+Aller sur ce lien, vous allez rencontrer une erreur, c'est normal.
+https://oc-lettings-3000.herokuapp.com/sentry-debug/
+
+Aller sur le dashboard Heroku de l'app:
+et dans la catégorie 'Installed add-ons', cliquer su Sentry, vous serai rediriger sur le dashboard>
+
 
 
 
