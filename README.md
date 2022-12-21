@@ -51,7 +51,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
-- `pytest`
+- `python3 manage.py test`
 
 #### Base de données
 
@@ -75,3 +75,78 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+## Deploiement
+Le déploiement d'applications, également connu sous le nom de déploiement de logiciels, est le processus d'installation, de configuration, de mise à jour et d'activation d'une application ou d'une suite d'applications qui rendent un système logiciel disponible, comme la garantie d'une certaine URL sur un serveur.
+
+### Configuration requise:
+Pour un deploiement optimal de l'application, certaine brique technologique:
+
+- Un compte Dockerhub, et docker d'installé sur votre machine:
+    - https://docs.docker.com/get-docker/
+  
+- Un compte Circle-ci connecté avec le github lié au projet:
+    - https://circleci.com/signup/    (Se connecter avec votre github)
+
+- Un compte Heroku:
+    - https://signup.heroku.com/
+
+- Un compte Sentry:
+    - https://sentry.io/signup/
+
+### Etapes du deploiement:
+### Etape 1:
+Allez sur Heroku, cree un app avec ce nom excatement:
+'oc-lettings-3000'
+Ensuite suivez l'etape 2.
+#### Etape 2:
+Se connecter a Circle-ci avec votre compte Github>
+Puis cliquez sur le boutton 'Set Up Project'
+Selectionez le premier choix 'Fastest'
+Le deployment va se lancer.
+
+Des que Circle-ci montre un succes.
+
+Retournez sur heroku.
+
+Au niveau du dashboard de l'app cree precedement
+cliquer sur Open app en haut à droite.
+
+ou rendez-vous a cette adresse:
+https://oc-lettings-3000.herokuapp.com/
+
+### Sentry
+En vous connectant sur Sentry renseignez le projet.
+et 
+
+
+
+
+
+
+
+
+#### Etapes pour le telchargement local:
+
+Apres avoir cloner le repo plus haut.
+Connectez - vous au dockerHub, et faire la recherche 
+``
+gatsfreecs
+``
+dans la bare de recherche puis copier le pull de la dernière images dans le terminal :
+
+exemple:
+```cython
+docker pull gatsfreecs/hash:2925ec5109e08d3cddf30032b5bfe1c2b581752a
+```
+
+Lancer le container en local
+ 
+```cython
+docker run --publish 8000:8000 gatsfreecs/hash:2925ec5109e08d3cddf30032b5bfe1c2b581752a
+```
+Dans votre navigateur mettre cette url : 0.0.0.0:8000
+
+
+
+
