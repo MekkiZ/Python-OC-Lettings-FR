@@ -109,7 +109,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
-
+sentry_sdk.init(os.environ['SENTRY_DSN'])
 sentry_sdk.init(
     dsn=os.environ['SENTRY_DSN'],
     integrations=[DjangoIntegration()]
