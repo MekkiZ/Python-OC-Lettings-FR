@@ -1,3 +1,5 @@
 **/__pycache__
 *.pyc
 venv
+commands.txt
+my_password.txt
