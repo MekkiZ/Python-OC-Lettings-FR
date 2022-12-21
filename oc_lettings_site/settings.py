@@ -109,8 +109,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
-sentry_sdk.init(os.environ['SENTRY_DSN'])
+
+keys_1 = 'e6e71e533d794851aa48d37aea05f5b6@o4504368580198400'
+keys_2 = '4504368580198400'
+
 sentry_sdk.init(
-    dsn=os.environ['SENTRY_DSN'],
-    integrations=[DjangoIntegration()]
+    dsn=f"https://{keys_1}.ingest.sentry.io/{keys_2}",
+    integrations=[
+        DjangoIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
 )
