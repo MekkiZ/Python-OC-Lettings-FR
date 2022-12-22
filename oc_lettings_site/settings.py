@@ -110,8 +110,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
 
-keys_1 = '3a11a3a2f0da47b4942e96a7081f2d8b@o4504368886579200'
-keys_2 = '4504368886579200'
+keys_1 = 'cdbe963b37e84f27abafdf784c6839bc@o4504372186906624'
+keys_2 = '4504372186906624'
 
 sentry_sdk.init(
     dsn=f"https://{keys_1}.ingest.sentry.io/{keys_2}",
