@@ -6,8 +6,7 @@ Website Orange County Lettings
 
 ### Requirements
 
-- 
-GitHub account with read access to this repository
+- GitHub account with read access to this repository
 - Git CLI
 - SQLite3 CLI
 - Python interpreter, version 3.6 ou more
