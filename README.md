@@ -1,27 +1,26 @@
 ## Résumé
 
-Website Orange County Lettings
+Site web d'Orange County Lettings
 
-## Local Developement 
+## Développement local
 
-### Requirements
+### Prérequis
 
-- 
-GitHub account with read access to this repository
+- Compte GitHub avec accès en lecture à ce repository
 - Git CLI
 - SQLite3 CLI
-- Python interpreter, version 3.6 ou more
+- Interpréteur Python, version 3.6 ou supérieure
 
-In the rest of the local development documentation, it is assumed that your OS shell's `python` command runs the Python interpreter above (unless a virtual environment is enabled).
+Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
 
 ### macOS / Linux
 
-#### Clone le repository
+#### Cloner le repository
 
 - `cd /path/to/put/project/in`
 - `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
 
-#### Create virtual environement:
+#### Créer l'environnement virtuel
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `python -m venv venv`
@@ -33,7 +32,7 @@ In the rest of the local development documentation, it is assumed that your OS s
 - Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
 - Pour désactiver l'environnement, `deactivate`
 
-#### Run the website
+#### Exécuter le site
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
@@ -48,13 +47,13 @@ In the rest of the local development documentation, it is assumed that your OS s
 - `source venv/bin/activate`
 - `flake8`
 
-#### Unit Tests
+#### Tests unitaires
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `python3 manage.py test`
 
-#### DataBase
+#### Base de données
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - Ouvrir une session shell `sqlite3`
@@ -65,114 +64,109 @@ In the rest of the local development documentation, it is assumed that your OS s
   Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
 - `.quit` pour quitter
 
-#### Admnistration panel
+#### Panel d'administration
 
-- Go here `http://localhost:8000/admin`
-- Connected with user : `admin`, password : `Abc1234!`
+- Aller sur `http://localhost:8000/admin`
+- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
 ### Windows
 
-Use the PowerShell, like this :
+Utilisation de PowerShell, comme ci-dessus sauf :
 
-- For activate the virtual environement, `.\venv\Scripts\Activate.ps1` 
-- Replace `which <my-command>` by `(Get-Command <my-command>).Path`
+- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
+- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
 
-## Deployment
-Application deployment, also known as software deployment, is the process of installing, configuring, updating, and activating an application or suite of applications that makes a system software available, such as guaranteeing a certain URL on a server..
+## Deploiement
+Le déploiement d'applications, également connu sous le nom de déploiement de logiciels, est le processus d'installation, de configuration, de mise à jour et d'activation d'une application ou d'une suite d'applications qui rendent un système logiciel disponible, comme la garantie d'une certaine URL sur un serveur.
 
-### Required configuration:
-For an optimal deployment of the application, certain technological brick:
+### Configuration requise:
+Pour un deploiement optimal de l'application, certaine brique technologique:
 
-- A Dockerhub account, and docker installed on your machine:
+- Un compte Dockerhub, et docker d'installé sur votre machine:
     - https://docs.docker.com/get-docker/
   
-- A Circle-ci account connected with the github linked to the project:
-    - https://circleci.com/signup/ (Sign up with your github)
+- Un compte Circle-ci connecté avec le github lié au projet:
+    - https://circleci.com/signup/    (Se connecter avec votre github)
 
-- A Heroku account:
+- Un compte Heroku:
     - https://signup.heroku.com/
 
-- A Sentry account:
+- Un compte Sentry:
     - https://sentry.io/signup/
 
-### Deployment steps:
-### Step 1:
-Go to Heroku, create an app with this exactly name:
+### Etapes du deploiement:
+### Etape 1:
+Allez sur Heroku, cree un app avec ce nom excatement:
 'oc-lettings-3000'
 
 ### Sentry
-install heroku cli in your machine:
+installer heroku cli dans votre machine:
 https://devcenter.heroku.com/articles/heroku-cli
 
-In the console of your venv:
+Dans la console de votre venv :
 ```cython
 heroku addons:create sentry --app oc-lettings-3000
 ```
-and open page with :
 ```cython
 heroku addons:open sentry  
 ```
-a window opens and follow the steps for Django,
-fill in copy only the digits of the DSN url in the project settings.
+une fenetre s'ouvre et suivez les etapes pour Django,
+ne renseignez copier que les chiffre de l'url DSN dans les settings du projet.
 
-example :
-you will have something like this:
-
+exemple : 
+vous aurez une chose comme ca :
 ```dsn="https://3a11a3a2f0da47b4942e96a7081f2d8b@o45043688865792.ingest.sentry.io/4504368886579200",```
 
-
-please fill in the settings variable:
-
+veuillez renseignez dans la varaible de settings:
 keys_1 = '3a11a3a2f0da47b4942e96a7081f2d8b@o45043688865792'
 keys_2 = '4504368886579200'
 
+Et ce à chaque fois, car l'url change a chaque fois qu'on change de app.
 
-And this every time, because the url changes every time you change the app.
-
-Redo an **git add, commit, push, each time you touch the settings.**
+refaire un add, commit, push, a chaque fois que vous toucher aux settings
 
 
-#### 2nd step:
-Connect to Circle-ci with your Github account >
-Then click on the 'Set Up Project' button
-Select the first choice 'Fastest'
-The deployment will start.
+#### Etape 2:
+Se connecter a Circle-ci avec votre compte Github>
+Puis cliquez sur le boutton 'Set Up Project'
+Selectionez le premier choix 'Fastest'
+Le deployment va se lancer.
 
-As soon as Circle shows success.
+Des que Circle-ci montre un succes.
 
-Go back to heroku.
+Retournez sur heroku.
 
-At the level of the dashboard of the app created previously
-click on Open app at the top right.
+Au niveau du dashboard de l'app cree precedement
+cliquer sur Open app en haut à droite.
 
-or go to this address:
+ou rendez-vous a cette adresse:
 https://oc-lettings-3000.herokuapp.com/
 
-Go to this link, you will encounter an error, this is normal.
+Aller sur ce lien, vous allez rencontrer une erreur, c'est normal.
 https://oc-lettings-3000.herokuapp.com/sentry-debug/
 
-return to the sentry page previously (sentry page previously spoken) and view the errors
+retoruner sur la page de sentry précedemment (page sentry precedement parlé) et visualisez les erreurs
 
-#### Steps for local download:
+#### Etapes pour le telchargement local:
 
-After cloning the repo above.
-Login to dockerHub, and do the search
+Apres avoir cloner le repo plus haut.
+Connectez - vous au dockerHub, et faire la recherche 
 ``
 gatsfreecs
 ``
-in the search bar then copy the sweater of the last images in the terminal:
+dans la bare de recherche puis copier le pull de la dernière images dans le terminal :
 
 exemple:
 ```cython
 docker pull gatsfreecs/hash:2925ec5109e08d3cddf30032b5bfe1c2b581752a
 ```
 
-run the container localy:
+Lancer le container en local
  
 ```cython
 docker run --publish 8000:8000 gatsfreecs/hash:2925ec5109e08d3cddf30032b5bfe1c2b581752a
 ```
-On your web browser put this url : 0.0.0.0:8000 or localhost:8000
+Dans votre navigateur mettre cette url : 0.0.0.0:8000.
 
 
 
