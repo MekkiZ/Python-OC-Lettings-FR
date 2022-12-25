@@ -1,5 +1,6 @@
 import os
 import django_heroku
+from decouple import config
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -10,10 +11,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -110,8 +111,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
 
-keys_1 = '6bfee8dcd0ef4d23803c120d9c385797@o4504379412774912'
-keys_2 = '4504379412774912'
+keys_1 = config('keys_1')
+keys_2 = config('keys_2')
 
 sentry_sdk.init(
     dsn=f"https://{keys_1}.ingest.sentry.io/{keys_2}",
